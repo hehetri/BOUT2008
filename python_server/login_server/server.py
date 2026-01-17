@@ -44,3 +44,6 @@ class LoginServer(threading.Thread):
                 self._server_socket.close()
             except Exception:
                 LOGGER.exception("Failed to close server socket")
+
+    def get_client_count(self) -> int:
+        return len(self._connections)

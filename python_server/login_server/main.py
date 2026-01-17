@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 
+from .gui import LoginServerGUI
 from .room_udp_server import RoomUDPServer
 from .server import LoginServer
 from .sql import SQLDatabase
@@ -11,6 +12,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 
 
 def main() -> None:
+    gui = LoginServerGUI()
     sql = SQLDatabase("LoginServer")
     sql.start()
 
@@ -20,6 +22,7 @@ def main() -> None:
     udp_server = RoomUDPServer(sql)
     udp_server.start()
 
+    gui.write("LoginServer started")
     login_server.join()
 
 

@@ -65,3 +65,6 @@ class ChannelServer(threading.Thread):
 
     def remove(self, remote_address: str) -> None:
         self._connections = [c for c in self._connections if c.remote_address != remote_address]
+
+    def get_client_count(self) -> int:
+        return len(self._connections)

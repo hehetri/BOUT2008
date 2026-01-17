@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 
+from .gui import ChannelGameServerGUI
 from .server import ChannelServer
 from .sql import SQLDatabase
 
@@ -15,6 +16,8 @@ def main() -> None:
 
     server = ChannelServer(11002, sql)
     server.start()
+    gui = ChannelGameServerGUI()
+    gui.write("ChannelServer started")
     server.join()
 
 
